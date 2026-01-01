@@ -46,6 +46,7 @@
  * @param val integer value
  */
 CGLM_INLINE
+constexpr
 int
 glm_sign(int val) {
   return ((val >> 31) - (-val >> 31));
@@ -59,6 +60,7 @@ glm_sign(int val) {
  * @param val float value
  */
 CGLM_INLINE
+constexpr
 float
 glm_signf(float val) {
   return (float)((val > 0.0f) - (val < 0.0f));
@@ -70,6 +72,7 @@ glm_signf(float val) {
  * @param[in] deg angle in degrees
  */
 CGLM_INLINE
+constexpr
 float
 glm_rad(float deg) {
   return deg * GLM_PIf / 180.0f;
@@ -81,6 +84,7 @@ glm_rad(float deg) {
  * @param[in] rad angle in radians
  */
 CGLM_INLINE
+constexpr
 float
 glm_deg(float rad) {
   return rad * 180.0f / GLM_PIf;
@@ -92,6 +96,7 @@ glm_deg(float rad) {
  * @param[in, out] deg pointer to angle in degrees
  */
 CGLM_INLINE
+constexpr
 void
 glm_make_rad(float *deg) {
   *deg = *deg * GLM_PIf / 180.0f;
@@ -103,6 +108,7 @@ glm_make_rad(float *deg) {
  * @param[in, out] rad pointer to angle in radians
  */
 CGLM_INLINE
+constexpr
 void
 glm_make_deg(float *rad) {
   *rad = *rad * 180.0f / GLM_PIf;
@@ -114,6 +120,7 @@ glm_make_deg(float *rad) {
  * @param[in] x x
  */
 CGLM_INLINE
+constexpr
 float
 glm_pow2(float x) {
   return x * x;
@@ -126,6 +133,7 @@ glm_pow2(float x) {
  * @param[in] b number 2
  */
 CGLM_INLINE
+constexpr
 float
 glm_min(float a, float b) {
   if (a < b)
@@ -140,6 +148,7 @@ glm_min(float a, float b) {
  * @param[in] b number 2
  */
 CGLM_INLINE
+constexpr
 float
 glm_max(float a, float b) {
   if (a > b)
@@ -156,6 +165,7 @@ glm_max(float a, float b) {
  * @return smallest of the two values
  */
 CGLM_INLINE
+constexpr
 int
 glm_imin(int a, int b) {
   if (a < b)
@@ -172,6 +182,7 @@ glm_imin(int a, int b) {
  * @return largest of the two values
  */
 CGLM_INLINE
+constexpr
 int
 glm_imax(int a, int b) {
   if (a > b)
@@ -187,6 +198,7 @@ glm_imax(int a, int b) {
  * @param[in] maxVal maximum value
  */
 CGLM_INLINE
+constexpr
 float
 glm_clamp(float val, float minVal, float maxVal) {
   return glm_min(glm_max(val, minVal), maxVal);
@@ -198,6 +210,7 @@ glm_clamp(float val, float minVal, float maxVal) {
  * @param[in] val value to clamp
  */
 CGLM_INLINE
+constexpr
 float
 glm_clamp_zo(float val) {
   return glm_clamp(val, 0.0f, 1.0f);
@@ -213,6 +226,7 @@ glm_clamp_zo(float val) {
  * @param[in]   t    interpolant (amount)
  */
 CGLM_INLINE
+constexpr
 float
 glm_lerp(float from, float to, float t) {
   return from + t * (to - from);
@@ -228,6 +242,7 @@ glm_lerp(float from, float to, float t) {
  * @param[in]   t       interpolant (amount) clamped between 0 and 1
  */
 CGLM_INLINE
+constexpr
 float
 glm_lerpc(float from, float to, float t) {
   return glm_lerp(from, to, glm_clamp_zo(t));
@@ -241,6 +256,7 @@ glm_lerpc(float from, float to, float t) {
  * @return      returns 0.0 if x < edge, else 1.0
  */
 CGLM_INLINE
+constexpr
 float
 glm_step(float edge, float x) {
   /* branching - no type conversion */
@@ -260,6 +276,7 @@ glm_step(float edge, float x) {
  * @param[in]   t    interpolant (amount)
  */
 CGLM_INLINE
+constexpr
 float
 glm_smooth(float t) {
   return t * t * (3.0f - 2.0f * t);
@@ -275,6 +292,7 @@ glm_smooth(float t) {
  * @param[in]   x     interpolant (amount)
  */
 CGLM_INLINE
+constexpr
 float
 glm_smoothstep(float edge0, float edge1, float x) {
   float t;
@@ -292,6 +310,7 @@ glm_smoothstep(float edge0, float edge1, float x) {
  * @param[in]   t    interpolant (amount)
  */
 CGLM_INLINE
+constexpr
 float
 glm_smoothinterp(float from, float to, float t) {
   return from + glm_smooth(t) * (to - from);
@@ -307,6 +326,7 @@ glm_smoothinterp(float from, float to, float t) {
  * @param[in]   t    interpolant (amount) clamped between 0 and 1
  */
 CGLM_INLINE
+constexpr
 float
 glm_smoothinterpc(float from, float to, float t) {
   return glm_smoothinterp(from, to, glm_clamp_zo(t));
@@ -319,6 +339,7 @@ glm_smoothinterpc(float from, float to, float t) {
  * @param[in]   b   b
  */
 CGLM_INLINE
+constexpr
 bool
 glm_eq(float a, float b) {
   return fabsf(a - b) <= GLM_FLT_EPSILON;
@@ -334,6 +355,7 @@ glm_eq(float a, float b) {
  * @param[in]   current current value
  */
 CGLM_INLINE
+constexpr
 float
 glm_percent(float from, float to, float current) {
   float t;
@@ -352,6 +374,7 @@ glm_percent(float from, float to, float current) {
  * @param[in]   current current value
  */
 CGLM_INLINE
+constexpr
 float
 glm_percentc(float from, float to, float current) {
   return glm_clamp_zo(glm_percent(from, to, current));
@@ -364,6 +387,7 @@ glm_percentc(float from, float to, float current) {
 * @param[in]   b float value 2 (pointer)
 */
 CGLM_INLINE
+constexpr
 void
 glm_swapf(float * __restrict a, float * __restrict b) {
   float t;
