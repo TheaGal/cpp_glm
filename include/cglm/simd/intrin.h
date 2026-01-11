@@ -95,7 +95,9 @@
 
 #  if defined(_M_ARM64) || defined(_M_HYBRID_X86_ARM64) || defined(_M_ARM64EC)
 #    include <arm64intr.h>
-#    include <arm64_neon.h>
+// #    include <arm64_neon.h>  @THEA: See warning below.
+#    warning `arm64_neon.h` commented out due to redefinition issues. \
+             @THEA: see if this is needed for every arm64 windows build or only just this one when using clang-cl.
 #    ifndef CGLM_NEON_FP
 #      define CGLM_NEON_FP  1
 #    endif
